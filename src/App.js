@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Button from './components/Button';
+ 
+const themes = {
+  'dark': {
+    backgroundColor: 'black',
+    color: 'white'
+  },
+  'light': {
+    backgroundColor: 'white',
+    color: 'black'
+  }
+}
+
+// 1. Crear el contexto
+export const ThemeContext = React.createContext();
+
+// 2. Crear el componente que provee el contexto
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeContext.Provider value={themes.dark}>
+     <Button/>
+      </ThemeContext.Provider>
     </div>
   );
 }
